@@ -72,7 +72,7 @@ Include: yum epel-release environment-modules vim tree
   . $SPACK_ROOT/share/spack/setup-env.sh
   spack install intel-mkl@2017.4.239
   export INCLUDES=" -I`spack location -i intel-mkl@2017.4.239`/mkl/include"
-  spack install --keep-stage ctffind4 ^fftw~mpi+openmp ^pango+X ^gtkplus+X ^intel-mkl@2017.4.239
+  spack install ctffind4 ^fftw~mpi+openmp ^pango+X ^gtkplus+X ^cairo+X ^intel-mkl@2017.4.239
 
 
 
