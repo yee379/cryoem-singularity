@@ -64,7 +64,7 @@ Include: yum epel-release environment-modules vim tree
 
   module() { eval `/usr/bin/modulecmd bash $*`; }
   export -f module
-  module load $(module avail -l 2>&1 | grep eman2 | awk '{print $1}' | head -n1)
+  module load $(module avail -l 2>&1 | grep ctffind4 | awk '{print $1}' | head -n1)
 
 %appinstall ctffind4
 
