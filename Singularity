@@ -60,6 +60,22 @@ Include: yum epel-release environment-modules vim tree
   spack -k install eman2@master ~cuda ^boost@1.58.0+python  ^fftw+openmp~mpi  ^cmake ~doc+ncurses+openssl+ownlibs~qt ^hdf5~mpi ^qt@4.8.6+dbus~examples~gtk~krellpatch+opengl+phonon~webkit ^mesa+llvm+swrender ^mesa-glu+mesa
 
 
+%apprun ctffind4
+
+  module() { eval `/usr/bin/modulecmd bash $*`; }
+  export -f module
+  module load $(module avail -l 2>&1 | grep eman2 | awk '{print $1}' | head -n1)
+
+%appinstall ctffind4
+
+  export SPACK_ROOT=/opt/spack/
+  . $SPACK_ROOT/share/spack/setup-env.sh
+  spack install intel-mkl@2017.4.239
+  export INCLUDES=" -I`spack location -i intel-mkl@2017.4.239`/mkl/include"
+  spack install --keep-stage ctffind4 ^fftw~mpi+openmp ^pango+X ^gtkplus+X ^intel-mkl@2017.4.239
+
+
+
 
 %environment
   export SPACK_ROOT=/opt/spack/    
