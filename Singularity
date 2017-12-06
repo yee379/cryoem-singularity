@@ -11,7 +11,7 @@ Include: yum epel-release environment-modules vim tree
 
   module() { eval `/usr/bin/modulecmd bash $*`; }
   export -f module
-  exec echo "Choose an app to run with --app [MotionCor2|]"
+  exec echo "Choose an app to run with --app [MotionCor2|imod|emawn2|ctffind4]"
 
 
 %apprun MotionCor2
@@ -35,6 +35,7 @@ Include: yum epel-release environment-modules vim tree
   module() { eval `/usr/bin/modulecmd bash $*`; }
   export -f module
   module load $(module avail -l 2>&1 | grep imod | awk '{print $1}' | head -n1)
+  $@
 
 %appinstall imod
 
@@ -48,6 +49,7 @@ Include: yum epel-release environment-modules vim tree
   module() { eval `/usr/bin/modulecmd bash $*`; }
   export -f module
   module load $(module avail -l 2>&1 | grep eman2 | awk '{print $1}' | head -n1)
+  $@
 
 %appinstall eman2
 
@@ -65,6 +67,7 @@ Include: yum epel-release environment-modules vim tree
   module() { eval `/usr/bin/modulecmd bash $*`; }
   export -f module
   module load $(module avail -l 2>&1 | grep ctffind4 | awk '{print $1}' | head -n1)
+  $@
 
 %appinstall ctffind4
 
